@@ -1,12 +1,16 @@
-package vn.edu.usth.usthweather;
+package com.example.usthweather;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,8 +63,28 @@ public class ForecastFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_forecast, container, false);
-        v.setBackgroundColor(0x2000BFFF);
-        return v;
+        View view = inflater.inflate(R.layout.fragment_forecast, container, false);
+        view.setBackgroundColor(0x20FF0000);
+
+        LinearLayout layout = new LinearLayout(getActivity());
+        layout.setOrientation(LinearLayout.VERTICAL);
+        layout.setPadding(20, 20, 20, 20);
+
+        // Day
+        TextView dayTextView = new TextView(getActivity());
+        dayTextView.setText("Thursday");
+        dayTextView.setTextSize(40);
+        dayTextView.setGravity(Gravity.CENTER_HORIZONTAL);
+        dayTextView.setPadding(0, 0, 0, 15);
+
+        // Weather icon
+        ImageView Icon = new ImageView(getActivity());
+        Icon.setImageResource(R.drawable.cloudy); // Icon
+
+        layout.addView(dayTextView);
+        layout.addView(Icon);
+
+        return layout;
+
     }
 }
